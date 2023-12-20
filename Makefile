@@ -19,3 +19,6 @@ build:
 	cd UserService && ${GOBUILD}  -o ../build/user cmd/main.go
 	cd ProductService && ${GOBUILD}  -o ../build/product cmd/main.go
 	ls
+	mkdir -p AuthService/build && cp build/auth AuthService/build
+	mkdir -p ProductService/build && cp build/product ProductService/build
+	mkdir -p UserService/build && cp build/user UserService/build

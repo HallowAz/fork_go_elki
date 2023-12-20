@@ -1,8 +1,8 @@
-FROM golang:1.19
+FROM golang:1.20-alpine
 
 WORKDIR /
 
-COPY build/product ./
+COPY ["build/product", "./"]
 
 # WORKDIR /app
 
