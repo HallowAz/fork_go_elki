@@ -139,7 +139,7 @@ jobs:
           username: ubuntu
           overwrite: true
           key: ${{ secrets.SECRET_KEY }}
-          source: "build, docker-compose.yml, Dockerfile, Makefile, AuthService/Dockerfile, ProductService/Dockerfile, UserService/Dockerfile"
+          source: "build, docker-compose.yml, Dockerfile, Makefile, AuthService/Dockerfile, ProductService/Dockerfile, UserService/Dockerfile, AuthService/heypresto"
           target: /home/ubuntu/testCI
       - name: Push auth
         uses: appleboy/scp-action@v0.1.4
