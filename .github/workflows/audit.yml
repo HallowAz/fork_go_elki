@@ -123,22 +123,11 @@ jobs:
           CGO_ENABLED: 0
         run: make build
 
-  #     # - name: Upload artifacts
-  #     #   uses: actions/upload-artifact@v3
-  #     #   with:
-  #     #     name: build-data
-  #     #     path: |
-  #     #       build
-  #     #       configs
-  #     #       web
-  #     #       deploy/postgres
-  #     #       deploy/prod
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
 
-  # deploy:
-  #   # needs: [build]
-  #   runs-on: ubuntu-latest
-
-  #   steps:
+    steps:
   #     # - name: Download build data
   #     #   uses: actions/download-artifact@v3
   #     #   with:
@@ -151,15 +140,15 @@ jobs:
   #         host: prinesy-poday.ru
   #         username: ubuntu
   #         overwrite: true
-  #         key: ${{ secrets.SSH_ACTIONS }}
+  #         key: ${{ secrets.SECRET_KEY }}
   #         source: "build/*, docker-compose.yml, Dockerfile"
   #         target: /home/ubuntu/2023_2_fanaty_elki
       
-  #     - name: Deploy
-  #       uses: appleboy/ssh-action@v0.1.10
-  #       with:
-  #         host: prinesy-poday.ru
-  #         username: ubuntu
-  #         key: ${{ secrets.SSH_ACTIONS }}
-  #         script: cd /home/centos/deploy/backend && ./deploy.sh
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: prinesy-poday.ru
+          username: ubuntu
+          key: ${{ secrets.SECRET_KEY }}
+          script: ls #cd /home/centos/deploy/backend && ./deploy.sh
   
