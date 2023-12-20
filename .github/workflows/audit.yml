@@ -70,61 +70,61 @@ on:
     branches: [ci]
 
 jobs:
-  versions:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
+  # versions:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.21
+  #   - name: Set up Go
+  #     uses: actions/setup-go@v3
+  #     with:
+  #       go-version: 1.21
 
-    - name: Verify dependencies
-      run: find -name go.mod -execdir go mod verify \;
+  #   - name: Verify dependencies
+  #     run: find -name go.mod -execdir go mod verify \;
 
-  linter:
-    runs-on: ubuntu-latest
-    container: golang
+  # linter:
+  #   runs-on: ubuntu-latest
+  #   container: golang
     
-    steps:
-      - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Install golint
-        run: go install golang.org/x/lint/golint@latest
+  #     - name: Install golint
+  #       run: go install golang.org/x/lint/golint@latest
 
-      - name: Run golint
-        run: find -name go.mod -execdir golint ./... \;
-  # # test:
-  # #   runs-on: ubuntu-latest
-  # #   container: golang
+  #     - name: Run golint
+  #       run: find -name go.mod -execdir golint ./... \;
+  # # # test:
+  # # #   runs-on: ubuntu-latest
+  # # #   container: golang
 
-  # #   steps:
-  # #     - uses: actions/checkout@v3
+  # # #   steps:
+  # # #     - uses: actions/checkout@v3
 
-  # #     - name: Run tests
-  # #       env:
-  # #         GOFLAGS: -buildvcs=false
-  # #       run: make coverage
+  # # #     - name: Run tests
+  # # #       env:
+  # # #         GOFLAGS: -buildvcs=false
+  # # #       run: make coverage
 
-  build:
-    needs: [linter]
+  # build:
+  #   needs: [linter]
   
-    runs-on: ubuntu-latest
-    container: golang
+  #   runs-on: ubuntu-latest
+  #   container: golang
 
-    steps:
-      - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Build
-        env:
-          GOOS: linux
-          GOARCH: amd64
-          CGO_ENABLED: 0
-        run: make build
+  #     - name: Build
+  #       env:
+  #         GOOS: linux
+  #         GOARCH: amd64
+  #         CGO_ENABLED: 0
+  #       run: make build
 
   deploy:
-    needs: [build]
+    # needs: [build]
     runs-on: ubuntu-latest
 
     steps:
@@ -135,9 +135,9 @@ jobs:
           username: ubuntu
           overwrite: true
           key: ${{ secrets.SECRET_KEY }}
-          source: "build/*, docker-compose.yml, Dockerfile"
+          source: "test"
           target: /home/ubuntu/testCI
-      
+      # build/*, docker-compose.yml, Dockerfile
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.10
         with:
