@@ -174,5 +174,5 @@ jobs:
           host: prinesy-poday.ru
           username: ubuntu
           key: ${{ secrets.SECRET_KEY }}
-          script: cd /home/ubuntu/testCI && make up
+          script: sudo bash && cd /home/ubuntu/testCI && make up
   
