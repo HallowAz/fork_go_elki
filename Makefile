@@ -18,3 +18,4 @@ build:
 	cd AuthService && ${GOBUILD}  -o ../build/auth cmd/main.go
 	cd UserService && ${GOBUILD}  -o ../build/user cmd/main.go
 	cd ProductService && ${GOBUILD}  -o ../build/product cmd/main.go
+	ls

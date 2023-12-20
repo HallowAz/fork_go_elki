@@ -122,6 +122,8 @@ jobs:
           GOARCH: amd64
           CGO_ENABLED: 0
         run: make build
+      - name: checkk
+        run: ls
 
   deploy:
     needs: [build]
