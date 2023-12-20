@@ -107,21 +107,21 @@ jobs:
   # #         GOFLAGS: -buildvcs=false
   # #       run: make coverage
 
-  # build:
-  #   # needs: [linter]
+  build:
+    needs: [linter]
   
-  #   runs-on: ubuntu-latest
-  #   container: golang
+    runs-on: ubuntu-latest
+    container: golang
 
-  #   steps:
-  #     - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-  #     - name: Build
-  #       env:
-  #         GOOS: linux
-  #         GOARCH: amd64
-  #         CGO_ENABLED: 0
-  #       run: make build
+      - name: Build
+        env:
+          GOOS: linux
+          GOARCH: amd64
+          CGO_ENABLED: 0
+        run: make build
 
   #     # - name: Upload artifacts
   #     #   uses: actions/upload-artifact@v3
