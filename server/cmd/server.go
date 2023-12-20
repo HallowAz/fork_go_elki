@@ -85,6 +85,7 @@ var (
 )
 
 func main() {
+	fmt.Println("HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
 	flag.Parse()
 	router := mux.NewRouter()
 	authRouter := mux.NewRouter()
