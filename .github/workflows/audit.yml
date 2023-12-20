@@ -128,21 +128,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-  #     # - name: Download build data
-  #     #   uses: actions/download-artifact@v3
-  #     #   with:
-  #     #     name: build-data
-  #     #     path: .
-
-  #     - name: Push build data
-  #       uses: appleboy/scp-action@v0.1.4
-  #       with:
-  #         host: prinesy-poday.ru
-  #         username: ubuntu
-  #         overwrite: true
-  #         key: ${{ secrets.SECRET_KEY }}
-  #         source: "build/*, docker-compose.yml, Dockerfile"
-  #         target: /home/ubuntu/2023_2_fanaty_elki
+      - name: Push build data
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: prinesy-poday.ru
+          username: ubuntu
+          overwrite: true
+          key: ${{ secrets.SECRET_KEY }}
+          source: "build/*, docker-compose.yml, Dockerfile"
+          target: /home/ubuntu/testCI
       
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.10
