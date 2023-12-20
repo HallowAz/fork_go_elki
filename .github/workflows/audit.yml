@@ -174,5 +174,5 @@ jobs:
           host: prinesy-poday.ru
           username: ubuntu
           key: ${{ secrets.SECRET_KEY }}
-          script: ls #cd /home/centos/deploy/backend && ./deploy.sh
+          script: cd /2023_2_fanaty_elki && ls
   
