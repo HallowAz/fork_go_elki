@@ -16,7 +16,7 @@
 
 # COPY --from=builder /usr/local/src/bin/server /
 
-FROM golang:1.20-alpine
+FROM ubuntu:latest
 
 WORKDIR /
 

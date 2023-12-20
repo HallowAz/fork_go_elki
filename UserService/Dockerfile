@@ -1,4 +1,4 @@
-FROM golang:1.20-alpine
+FROM ubuntu:latest
 
 WORKDIR /
 
@@ -14,4 +14,4 @@ COPY ["build/user", "./"]
 
 EXPOSE 8083
 
-CMD [ "./app/user" ]
+CMD [ "./user" ]
