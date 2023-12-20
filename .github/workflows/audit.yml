@@ -174,5 +174,5 @@ jobs:
           host: prinesy-poday.ru
           username: ubuntu
           key: ${{ secrets.SECRET_KEY }}
-          script: cd /home/ubuntu/2023_2_fanaty_elki && ls
+          script: cd /home/ubuntu/testCI && make up
   
