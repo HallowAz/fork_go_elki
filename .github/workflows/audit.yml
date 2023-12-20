@@ -124,7 +124,7 @@ jobs:
         run: make build
 
   deploy:
-    needs: [versions]
+    needs: [build]
     runs-on: ubuntu-latest
 
     steps:
