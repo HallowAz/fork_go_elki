@@ -141,38 +141,38 @@ jobs:
           key: ${{ secrets.SECRET_KEY }}
           source: "build, docker-compose.yml, Dockerfile, Makefile, AuthService/Dockerfile, ProductService/Dockerfile, UserService/Dockerfile, AuthService/heypresto"
           target: /home/ubuntu/testCI
-      - name: Push auth
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: prinesy-poday.ru
-          username: ubuntu
-          overwrite: true
-          key: ${{ secrets.SECRET_KEY }}
-          source: "AuthService/Dockerfile"
-          target: /home/ubuntu/testCI/AuthService
-      - name: Push user
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: prinesy-poday.ru
-          username: ubuntu
-          overwrite: true
-          key: ${{ secrets.SECRET_KEY }}
-          source: "UserService/Dockerfile"
-          target: /home/ubuntu/testCI/UserService
-      - name: Push product
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: prinesy-poday.ru
-          username: ubuntu
-          overwrite: true
-          key: ${{ secrets.SECRET_KEY }}
-          source: "ProductService/Dockerfile"
-          target: /home/ubuntu/testCI/ProductService
-      # - name: Deploy
-      #   uses: appleboy/ssh-action@v0.1.10
+      # - name: Push auth
+      #   uses: appleboy/scp-action@v0.1.4
       #   with:
       #     host: prinesy-poday.ru
       #     username: ubuntu
+      #     overwrite: true
       #     key: ${{ secrets.SECRET_KEY }}
-      #     script: ls #cd /home/centos/deploy/backend && ./deploy.sh
+      #     source: "AuthService/Dockerfile"
+      #     target: /home/ubuntu/testCI/AuthService
+      # - name: Push user
+      #   uses: appleboy/scp-action@v0.1.4
+      #   with:
+      #     host: prinesy-poday.ru
+      #     username: ubuntu
+      #     overwrite: true
+      #     key: ${{ secrets.SECRET_KEY }}
+      #     source: "UserService/Dockerfile"
+      #     target: /home/ubuntu/testCI/UserService
+      # - name: Push product
+      #   uses: appleboy/scp-action@v0.1.4
+      #   with:
+      #     host: prinesy-poday.ru
+      #     username: ubuntu
+      #     overwrite: true
+      #     key: ${{ secrets.SECRET_KEY }}
+      #     source: "ProductService/Dockerfile"
+      #     target: /home/ubuntu/testCI/ProductService
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: prinesy-poday.ru
+          username: ubuntu
+          key: ${{ secrets.SECRET_KEY }}
+          script: ls #cd /home/centos/deploy/backend && ./deploy.sh
   
