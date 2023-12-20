@@ -139,7 +139,7 @@ jobs:
           username: ubuntu
           overwrite: true
           key: ${{ secrets.SECRET_KEY }}
-          source: "build/*, docker-compose.yml, Dockerfile, test"
+          source: "build, docker-compose.yml, Dockerfile, test"
           target: /home/ubuntu/testCI
       # - name: Deploy
       #   uses: appleboy/ssh-action@v0.1.10
