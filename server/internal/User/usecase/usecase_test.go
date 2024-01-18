@@ -23,26 +23,26 @@ func TestGetUserByIdSucces(t *testing.T) {
 
 	dbuser := &dto.DBGetUser{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
 		Birthday:    sql.NullString{Valid: true, String: "1995-04-04"},
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Email:       "john@example.com",
 		Icon:        sql.NullString{Valid: true, String: "dificon"},
 	}
 
 	user := &entity.User{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Birthday:    "1995-04-04",
 		Email:       "john@example.com",
 		Icon:        "dificon",
 	}
 
-	mockUs.EXPECT().FindUserById(uint(1)).Return(dbuser, nil)
-	actual, err := usecase.GetUserById(uint(1))
+	mockUs.EXPECT().FindUserByID(uint(1)).Return(dbuser, nil)
+	actual, err := usecase.GetUserByID(uint(1))
 	assert.Equal(t, user, actual)
 	assert.Nil(t, err)
 
@@ -58,19 +58,19 @@ func TestCreateUserSucces(t *testing.T) {
 
 	dbuser := &dto.DBCreateUser{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
 		Birthday:    sql.NullString{Valid: true, String: "1995-04-04"},
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Email:       "john@example.com",
 		Icon:        sql.NullString{Valid: true, String: "dificon"},
 	}
 
 	user := &entity.User{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Birthday:    "1995-04-04",
 		Email:       "john@example.com",
 		Icon:        "dificon",
@@ -96,29 +96,29 @@ func TestUpdateUserSucces(t *testing.T) {
 
 	dbuser := &dto.DBUpdateUser{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
 		Birthday:    sql.NullString{Valid: true, String: "1995-04-04"},
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Email:       "john@example.com",
 		Icon:        sql.NullString{Valid: true, String: "dificon"},
 	}
 
 	dbgetuser := &dto.DBGetUser{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
 		Birthday:    sql.NullString{Valid: true, String: "1995-04-04"},
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Email:       "john@example.com",
 		Icon:        sql.NullString{Valid: true, String: "dificon"},
 	}
 
 	user := &entity.User{
 		ID:          1,
-		Username:    "john_doe",
+		Username:    "Иван Иванович",
 		Password:    "secure_password",
-		PhoneNumber: "89165342399",
+		PhoneNumber: "+7 916 534-23-99",
 		Birthday:    "1995-04-04",
 		Email:       "john@example.com",
 		Icon:        "dificon",
@@ -127,7 +127,7 @@ func TestUpdateUserSucces(t *testing.T) {
 	mockUs.EXPECT().FindUserByUsername(dbuser.Username).Return(nil, nil)
 	mockUs.EXPECT().FindUserByEmail(dbuser.Email).Return(nil, nil)
 	mockUs.EXPECT().FindUserByPhone(dbuser.PhoneNumber).Return(nil, nil)
-	mockUs.EXPECT().FindUserById(uint(1)).Return(dbgetuser, nil)
+	mockUs.EXPECT().FindUserByID(uint(1)).Return(dbgetuser, nil)
 	mockUs.EXPECT().UpdateUser(dbuser).Return(nil)
 	err := usecase.UpdateUser(user)
 	assert.Nil(t, err)
