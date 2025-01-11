@@ -2,7 +2,7 @@
 name: audit
 on:
   push:
-    branches: [ciandeasyjson]
+    branches: [main]
 
 jobs:
   # versions:
@@ -71,17 +71,17 @@ jobs:
       - name: Push build data
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: prinesy-poday.ru
+          host: 185.241.195.151
           username: ubuntu
           overwrite: true
           key: ${{ secrets.VM_RSA_KEY }}
           source: "build, docker-compose.yml, Dockerfile, Makefile, AuthService/Dockerfile, ProductService/Dockerfile, UserService/Dockerfile"
-          target: /home/ubuntu/2023_2_fanaty_elki
+          target: /home/ubuntu/fork_go_elki
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: prinesy-poday.ru
           username: ubuntu
           key: ${{ secrets.VM_RSA_KEY }}
-          script: cd /home/ubuntu/2023_2_fanaty_elki && sudo make copy && sudo make up
+          script: cd /home/ubuntu/fork_go_elki && sudo make copy && sudo make up
   
