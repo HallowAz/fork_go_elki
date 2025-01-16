@@ -208,13 +208,13 @@ func (us UserUsecase) checkUserFieldsUpdate(user *entity.User) error {
 
 // UpdateAvatar updates user's avatar
 func (us UserUsecase) UpdateAvatar(file multipart.File, filehandler *multipart.FileHeader, id uint) error {
-	endpoint := "bring-give.hb.ru-msk.vkcs.cloud"
-	location := "bring-give"
-	accessKeyID := "k1EeoX4ejNogUZS2TcirVq"
-	secretAccessKey := "6Bo85qeL9A1bmrjdWH7a577wKwzbipc6ajVZGFoXTyaT"
+	endpoint := "cassette.hb.ru-msk.vkcloud-storage.ru"
+	location := "images"
+	accessKeyID := "wo9ia4q1Zq15RD8p6wZmjV"
+	secretAccessKey := "VoRsRHCz9zkY5ZjFMA2tfeMvZz5imeEJ2kpXK97ENsd"
 	useSSL := true
 
-	bucketName := "bring-give"
+	bucketName := "images"
 	objectName := filehandler.Filename
 	minioClient, err := minio.New(endpoint, accessKeyID, secretAccessKey, useSSL)
 	if err != nil {
